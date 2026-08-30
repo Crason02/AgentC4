@@ -61,5 +61,13 @@ public class HolderScript : MonoBehaviour
                 ds.dialogue(4);
             }
         }
+        if (type=="bench")
+        {
+            if (childAmt<=(ogCount-minChildsKilled))
+            {
+                fired = true;
+                ds.dialogue(6);
+            }
+        }
     }
 }

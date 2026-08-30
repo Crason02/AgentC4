@@ -15,12 +15,17 @@ public class DialogueScript : MonoBehaviour
     public int[] f4;
     public string[] d5;
     public int[] f5;
+    public string[] d6;
+    public int[] f6;
+    public string[] d7;
+    public int[] f7;
     public GameObject firstHolder;
     public GameObject secondHolder;
     public GameObject thirdHolder;
     public GameObject fourthHolder;
     public GameObject fifthHolder;
     public GameObject sixthHolder;
+    public GameObject seventhHolder;
     public Sprite[] faceSprites;
     public TextMeshProUGUI textDisplay;
     public TextMeshProUGUI bossDisplay;
@@ -35,21 +40,25 @@ public class DialogueScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
 {
-    dialogues = new string[5][];
-    faces = new int[5][];
+    dialogues = new string[7][];
+    faces = new int[7][];
 
     dialogues[0] = d1;
     dialogues[1] = d2;
     dialogues[2] = d3;
     dialogues[3] = d4;
     dialogues[4] = d5;
+    dialogues[5] = d6;
+    dialogues[6] = d7;
 
     faces[0] = f1;
     faces[1] = f2;
     faces[2] = f3;
     faces[3] = f4;
     faces[4] = f5;
-    dialogue(0);
+    faces[5] = f6;
+    faces[6] = f7;
+    dialogue(5);
 }
 
     // Update is called once per frame
@@ -76,7 +85,6 @@ public class DialogueScript : MonoBehaviour
     
     public void dialogue(int diaNum)
     {
-        //Time.timeScale = 0f;
         bossDisplay.text = "boss";
         if (diaNum==2)
         {
@@ -97,7 +105,6 @@ public class DialogueScript : MonoBehaviour
 
     public void endDialogue()
     {
-        Time.timeScale = 1f;
         ani.SetTrigger("end");
         talking = false;
         cs.pause = false;
@@ -128,12 +135,19 @@ public class DialogueScript : MonoBehaviour
         {
             ps.tags.Add("ball");
             fifthHolder.SetActive(true);
-            StartCoroutine(waitBalloonMessage());
+            StartCoroutine(waitBallMessage());
         }
         if (diaIndex==5)
         {
             ps.tags.Add("balloon");
             sixthHolder.SetActive(true);
+            StartCoroutine(waitBenchMessage());
+        }
+        if (diaIndex==6)
+        {
+            ps.tags.Add("bench");
+            seventhHolder.SetActive(true);
+            StartCoroutine(waitBenchMessage());
         }
     }
 
@@ -143,9 +157,14 @@ public class DialogueScript : MonoBehaviour
         dialogue(3);
     }
 
-    IEnumerator waitBalloonMessage()
+    IEnumerator waitBallMessage()
     {
         yield return new WaitForSeconds(35f);
         dialogue(5);
+    }
+    IEnumerator waitBenchMessage()
+    {
+        yield return new WaitForSeconds(25f);
+        dialogue(6);
     }
 }
