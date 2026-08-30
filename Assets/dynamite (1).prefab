@@ -105,6 +105,8 @@ MonoBehaviour:
   ticking: 0
   waitTime: 1.5
   ani: {fileID: 7327028058177155769}
+  explosionClip: {fileID: 8300000, guid: cf6336caaa2284842b60e3d16b9e44dc, type: 3}
+  tags: []
 --- !u!95 &7327028058177155769
 Animator:
   serializedVersion: 7

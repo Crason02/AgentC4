@@ -7,6 +7,7 @@ public class DynamiteScript : MonoBehaviour
     public bool ticking = false;
     public float waitTime = 2f;
     public Animator ani;
+    public AudioClip explosionClip;
     public List<string> tags = new List<string>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,7 @@ public class DynamiteScript : MonoBehaviour
                 sss.AddTrauma(0.5f);
                 Instantiate(explosion, transform.position, transform.rotation).transform.localScale = new Vector3(0.1f,0.1f,0.1f);
                 Destroy(other.gameObject);
+                AudioSource.PlayClipAtPoint(explosionClip, transform.position);
                 Destroy(gameObject);
                 return;
             }

@@ -14,7 +14,7 @@ public class BalloonScript : MonoBehaviour
     {
         rb.AddForce(new Vector3(0,1,0), ForceMode.Acceleration);
         transform.rotation = Quaternion.Euler(-90, 0, 0);
-        if (transform.position.y>300f)
+        if (transform.position.y>3000f)
         {
             Destroy(gameObject);
         }

@@ -66,7 +66,7 @@ public class HolderScript : MonoBehaviour
             if (childAmt<=(ogCount-minChildsKilled))
             {
                 fired = true;
-                ds.dialogue(6);
+                ds.dialogue(7);
             }
         }
     }
