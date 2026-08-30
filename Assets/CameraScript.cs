@@ -7,6 +7,7 @@ public class CameraScript : MonoBehaviour
 
     private float xRotation = 0f;
     public bool pause = false;
+    public GameObject resumeHole;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -28,12 +29,11 @@ public class CameraScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Time.timeScale = 0f;
             Cursor.lockState = CursorLockMode.None;
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Cursor.lockState = CursorLockMode.Locked;
+            pause = true;
+            playerBody.gameObject.GetComponent<PlayerScript>().pause = true;
+            resumeHole.SetActive(true);
         }
     }
 }

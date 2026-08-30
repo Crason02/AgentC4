@@ -19,6 +19,8 @@ public class DialogueScript : MonoBehaviour
     public GameObject secondHolder;
     public GameObject thirdHolder;
     public GameObject fourthHolder;
+    public GameObject fifthHolder;
+    public GameObject sixthHolder;
     public Sprite[] faceSprites;
     public TextMeshProUGUI textDisplay;
     public TextMeshProUGUI bossDisplay;
@@ -74,6 +76,7 @@ public class DialogueScript : MonoBehaviour
     
     public void dialogue(int diaNum)
     {
+        //Time.timeScale = 0f;
         bossDisplay.text = "boss";
         if (diaNum==2)
         {
@@ -94,6 +97,7 @@ public class DialogueScript : MonoBehaviour
 
     public void endDialogue()
     {
+        Time.timeScale = 1f;
         ani.SetTrigger("end");
         talking = false;
         cs.pause = false;
@@ -120,11 +124,28 @@ public class DialogueScript : MonoBehaviour
             ps.tags.Add("sign");
             fourthHolder.SetActive(true);
         }
+        if (diaIndex==4)
+        {
+            ps.tags.Add("ball");
+            fifthHolder.SetActive(true);
+            StartCoroutine(waitBalloonMessage());
+        }
+        if (diaIndex==5)
+        {
+            ps.tags.Add("balloon");
+            sixthHolder.SetActive(true);
+        }
     }
 
     IEnumerator waitGarbageMessage()
     {
         yield return new WaitForSeconds(35f);
         dialogue(3);
+    }
+
+    IEnumerator waitBalloonMessage()
+    {
+        yield return new WaitForSeconds(35f);
+        dialogue(5);
     }
 }

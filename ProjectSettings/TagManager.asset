@@ -12,6 +12,8 @@ TagManager:
   - barrel
   - rock
   - sign
+  - balloon
+  - ball
   layers:
   - Default
   - TransparentFX
